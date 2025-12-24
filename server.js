@@ -1,7 +1,9 @@
 import express from "express";
 import productrouter from "./src/features/product/product.routes.js";
+import bodyParser from "body-parser";
 
 const server = express();
+server.use(bodyParser.json());
 
 server.use("/api/products", productrouter);
 
