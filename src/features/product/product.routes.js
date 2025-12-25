@@ -6,7 +6,12 @@ const productrouter = express.Router();
 
 const productController = new ProductController();
 productrouter.get("/", productController.getAllProducts);
-productrouter.post("/", upload.single("imageUrl"),  productController.addProduct);
+productrouter.post(
+  "/",
+  upload.single("imageUrl"),
+  productController.addProduct
+);
+productrouter.get("/:id", productController.getOneProduct);
 // router.get("")
 
 export default productrouter;
