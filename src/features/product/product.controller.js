@@ -28,4 +28,13 @@ export default class ProductController {
       return res.status(200).send(product);
     }
   }
+
+  filterProducts(req, res) {
+    console.log("req", req.query);
+    const minPrice = req.query.minPrice;
+    const maxPrice = req.query.maxPrice;
+    const category = req.query.category;
+    const result = ProductModel.filter(minPrice, maxPrice, category);
+    res.send(result);
+  }
 }
