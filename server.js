@@ -2,13 +2,13 @@ import express from "express";
 import productrouter from "./src/features/product/product.routes.js";
 import bodyParser from "body-parser";
 import userRouter from "./src/features/user/user.routes.js";
+import basicAuthorizer from "./src/middlewares/basicAuth.middleware.js";
 
 const server = express();
 server.use(bodyParser.json());
 
-server.use("/api/products", productrouter);
+server.use("/api/products", basicAuthorizer, productrouter);
 server.use("/api/users", userRouter);
-
 
 server.get("/", (req, res) => {
   res.send("welocome to apis");

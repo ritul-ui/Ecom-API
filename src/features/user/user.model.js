@@ -6,19 +6,23 @@ export default class UserModel {
     this.type = type;
   }
 
-  static SignUp(name ,email, password, type){
-    const newUser = new UserModel(name ,email, password, type);
-    newUser.id = users.length +1;
+  static SignUp(name, email, password, type) {
+    const newUser = new UserModel(name, email, password, type);
+    newUser.id = users.length + 1;
     users.push(newUser);
     return newUser;
   }
-  static SignIn(email, password){
+  static SignIn(email, password) {
     const user = users.find((u) => u.email === email && u.password == password);
     return user;
   }
+
+  static getAll() {
+    return users;
+  }
 }
 
-var users = [
+let users = [
   {
     name: "Seller user",
     email: "seller@ecom.com",
