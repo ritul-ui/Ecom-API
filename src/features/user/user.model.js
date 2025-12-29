@@ -22,6 +22,7 @@ export default class UserModel {
   }
 }
 
+
 let users = [
   {
     name: "Seller user",
