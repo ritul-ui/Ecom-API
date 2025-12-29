@@ -17,7 +17,19 @@ export default class ProductController {
     const createdRecord = ProductModel.add(newProduct);
     res.status(201).send(createdRecord);
   }
-  rateProduct(req, res) {}
+  rateProduct(req, res) {
+    console.log("req query", req.query);
+    const userId = req.query.userId;
+    const productId = req.query.productId;
+    const rating = req.query.rating;
+    const error = ProductModel.rateProduct(userId, productId, rating);
+    console.log("eroor", error);
+    if (error) {
+      return res.status(400).send(error);
+    } else {
+      return res.status(200).send("rating has been updated");
+    }
+  }
   getOneProduct(req, res) {
     console.log("params", req.params.id);
     const id = req.params.id;

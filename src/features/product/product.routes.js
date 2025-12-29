@@ -6,6 +6,8 @@ const productrouter = express.Router();
 
 const productController = new ProductController();
 
+productrouter.post("/rate", productController.rateProduct);
+
 //localhost:3200/api/products/filter?minPrice=10&maxPrice=20&category=Cateogory1
 productrouter.get("/filter", productController.filterProducts);
 
