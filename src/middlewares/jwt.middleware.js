@@ -15,6 +15,7 @@ const jwtAuth = (req, res, next) => {
   try {
     const payload = jwt.verify(token, "JWT_SECRET_KEY");
     console.log("payload", payload);
+    req.userId = payload.userId;
   } catch (error) {
     //4 .return error
     console.log("error", error);
