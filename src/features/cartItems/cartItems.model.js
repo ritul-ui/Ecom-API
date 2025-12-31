@@ -17,6 +17,16 @@ export default class CartItemModel {
   static get(userId) {
     return cartItems.filter((i) => i.userId == userId);
   }
+  static delete(cartItemId, userId) {
+    const cartItemIndex = cartItems.findIndex(
+      (i) => i.id == cartItemId && i.userId == userId
+    );
+    if (cartItemIndex == -1) {
+      return "item not found";
+    } else {
+      cartItems.splice(cartItemIndex, 1);
+    }
+  }
 }
 
-var cartItems = [new CartItemModel(1, 2, 1, 1), new CartItemModel(1,1,2,2)];
+var cartItems = [new CartItemModel(1, 2, 1, 1), new CartItemModel(1, 1, 2, 2)];
